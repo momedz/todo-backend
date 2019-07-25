@@ -1,0 +1,20 @@
+
+const DEFAULT = {
+  EXPRESS_PORT: 3000,
+  EXPRESS_LIMIT: '50mb',
+
+  MONGO_URL: 'localhost',
+  MONGO_PORT: 27017,
+  MONGO_DB: 'default',
+
+  DEBUG: true
+};
+
+module.exports = {
+  MONGO_URL: process.env.MONGO_URL || DEFAULT.MONGO_URL,
+  MONGO_PORT: process.env.MONGO_PORT || DEFAULT.MONGO_PORT,
+  MONGO_DB: process.env.MONGO_DB || DEFAULT.MONGO_DB,
+  EXPRESS_PORT: process.env.EXPRESS_PORT || DEFAULT.EXPRESS_PORT,
+  EXPRESS_LIMIT: process.env.EXPRESS_LIMIT || DEFAULT.EXPRESS_LIMIT,
+  DEBUG: process.env.DEBUG || DEFAULT.DEBUG,
+};
