@@ -1,0 +1,119 @@
+tags:
+  - name: todo
+    description: 
+
+paths:
+  /todo:
+    get:
+      tags:
+        - todo
+      summary: Get list's todo
+      responses:
+        '200':
+          description: success
+      security:
+        - auth: []
+    post:
+      tags:
+        - todo
+      summary: Add todo
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/Todo"
+      responses:
+        '201':
+          description: created
+        '400':
+          description: bad request
+      security:
+        - auth: []
+  /todo/{id}:
+    get:
+      tags:
+        - todo
+      summary: Get todo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not found
+      security:
+        - auth: []
+    put:
+      tags:
+        - todo
+      summary: update information in todo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/Todo"
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not found
+      security:
+        - auth: []
+    patch:
+      tags:
+        - todo
+      summary: change status todo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not found
+      security:
+        - auth: []
+    delete:
+      tags:
+        - todo
+      summary: delete todo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not found
+      security:
+        - auth: []
+
+definitions:
+  ID:
+    type: object
+    properties:
+      _id:
+        type: string
+        example: 5b053278a5536a31dc38971f
+  Todo:
+    type: object
+    properties:
+      title: 
+        type: string
+        example: Title's todo
+      description: 
+        type: string
+        example: Description's todo

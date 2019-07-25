@@ -11,17 +11,17 @@ const document = (directory='**') => swaggerJSDoc({
       description: '',
     },
     host: 'localhost:3000',
-    // basePath: '/',
+    basePath: '/',
     schemes: [ 'http' ],
     securityDefinitions: {
-      kong: {
+      auth: {
         type: 'apiKey',
-        name: 'username',
+        name: 'x-username',
         in: 'header'
       }
     }
   }, 
-  apis: [`./src/documents/${directory}/*.yaml`]
+  apis: ['./src/document/*.yaml', `./src/documents/${directory}/*.yaml`]
 });
 
 router.use('/doc', 
